@@ -3,8 +3,10 @@ package com.hencoder.hencoderpracticedraw3.practice;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class Practice01DrawTextView extends View {
@@ -25,6 +27,10 @@ public class Practice01DrawTextView extends View {
 
     {
         paint.setTextSize(60);
+
+        Rect rect = new Rect();
+        paint.getTextBounds(text, 0, text.length(), rect);
+        Log.e("eric", "rect: " + rect.toShortString());// [4,-45][421,1]
     }
 
     @Override
@@ -33,5 +39,6 @@ public class Practice01DrawTextView extends View {
 
         // 使用 drawText() 来绘制文字
         // 文字坐标： (50, 100)
+        canvas.drawText(text, 50, 100, paint);
     }
 }
